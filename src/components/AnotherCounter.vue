@@ -8,6 +8,7 @@
 <script>
 import { mapMutations } from "vuex";
 export default {
+  //use mutations directly (these must be synchronous)
   methods: {
     ...mapMutations(["increment", "decrement"]),
     increment() {

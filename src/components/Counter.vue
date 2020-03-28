@@ -6,10 +6,11 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 export default {
+  // use actions -- these can be ansychronous
   methods: {
-    ...mapMutations(["increment", "decrement"])
+    ...mapActions(["increment", "decrement"])
   }
 };
 </script>
