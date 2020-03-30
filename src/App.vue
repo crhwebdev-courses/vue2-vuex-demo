@@ -9,6 +9,9 @@
         <app-counter></app-counter>
         <hr />
         <app-another-counter></app-another-counter>
+        <hr />
+        <input type="text" v-model="blah" />
+        <p>{{ blah }}</p>
       </div>
     </div>
   </div>
@@ -21,6 +24,23 @@ import AnotherResult from "./components/AnotherResult.vue";
 import AnotherCounter from "./components/AnotherCounter.vue";
 
 export default {
+  computed: {
+    // use a getter and setter for computed property blah - we
+    // need this so v-model works correctly with vuex
+    blah: {
+      get() {
+        return this.$store.getters.blah;
+      },
+      set(value) {
+        this.$store.dispatch("updateBlah", value);
+      }
+    }
+  },
+  methods: {
+    updateBlah(event) {
+      this.$store.dispatch("updateBlah", event.target.value);
+    }
+  },
   components: {
     appCounter: Counter,
     appAnotherCounter: AnotherCounter,
