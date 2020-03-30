@@ -6,4 +6,10 @@ import _ from "lodash";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store(_.merge(counter, blah));
+// export const store = new Vuex.Store(_.merge(counter, blah));
+export const store = new Vuex.Store({
+  modules: {
+    counter,
+    blah
+  }
+});
