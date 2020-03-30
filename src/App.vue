@@ -12,6 +12,10 @@
         <hr />
         <input type="text" v-model="blah" />
         <p>{{ blah }}</p>
+        <hr />
+        <button class="btn btn-primary" @click="doSomething">
+          Do Something
+        </button>
       </div>
     </div>
   </div>
@@ -22,6 +26,7 @@ import Counter from "./components/Counter.vue";
 import Result from "./components/Result.vue";
 import AnotherResult from "./components/AnotherResult.vue";
 import AnotherCounter from "./components/AnotherCounter.vue";
+import { mapActions } from "vuex";
 
 export default {
   computed: {
@@ -37,6 +42,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["doSomething"]),
     updateBlah(event) {
       this.$store.dispatch("updateBlah", event.target.value);
     }
